@@ -22,9 +22,18 @@ const loadJson = (filepath, encoding = "utf8") =>
     fs.readFileSync(path.resolve(__dirname, `${filepath}.json`), { encoding })
   );
 
-router.get("/books", (req, res) => {
+router.get("/books", (_req, res) => {
   if (books === null) books = loadJson("./bookData");
   res.status(200).send(books);
+});
+
+router.post("/search", (req, res) => {
+  const { query } = req.body;
+  const result = books["books"].filter(
+    (book) => book.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  );
+
+  res.status(200).send({ books: result });
 });
 
 router.put("/books/:bookId", (req, res) => {

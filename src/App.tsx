@@ -1,26 +1,37 @@
 import React, { useEffect, useState, Fragment } from "react";
 import * as BooksAPI from "@main/BooksAPI";
 import { Styles } from "@main/assets/styles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "@main/components/MainPage";
+import BookSearch from "@main/components/BookSearch";
 
 const App = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     (async () => {
-      await onLoadBookshelf();
+      await onUpdateBookshelf();
     })();
   }, []);
 
-  const onLoadBookshelf = async () => {
+  const onUpdateBookshelf = async () => {
     setBooks(await BooksAPI.getAll());
   };
 
   return (
-    <Fragment>
+    <Router>
       <Styles />
-      <MainPage books={books} onUpdateBookshelf={onLoadBookshelf} />
-    </Fragment>
+      <div className="app">
+        <Switch>
+          <Route exact path="/loangiver">
+            <MainPage books={books} onUpdateBookshelf={onUpdateBookshelf} />
+          </Route>
+          <Route exact path="/loangiver/search">
+            <BookSearch shelf={books} onUpdateBookshelf={onUpdateBookshelf} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
