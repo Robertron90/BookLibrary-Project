@@ -16,9 +16,11 @@
     "dependencies": {
         "@ijl/cli": "^1.10.3",
         "express": "^4.17.1",
+        "nodemon": "^2.0.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
+        "react-bootstrap": "^1.0.0-beta.11",
         "styled-components": "^5.2.0",
         "typescript": "^4.0.2"
     },

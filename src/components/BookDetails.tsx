@@ -3,16 +3,16 @@ import BookList from "@main/components/BookList";
 import * as BooksAPI from "@main/BooksAPI";
 import { Link } from "react-router-dom";
 
-const BookSearch = ({ shelf, onUpdateBookshelf }) => {
+const BookDetails = ({ shelf, onUpdateBookshelf }) => {
   const [searchResults, setSearchResults] = useState([]);
 
-  const searchBook = async (value) => {
+  const searchBookDetails = async (value) => {
     setSearchResults(await BooksAPI.search(value));
   };
 
   const handleChange = async ({ target: { value } }) => {
     console.log("me this");
-    await searchBook(value);
+    await searchBookDetails (value);
   };
 
   return (
@@ -48,4 +48,4 @@ const BookSearch = ({ shelf, onUpdateBookshelf }) => {
   );
 };
 
-export default BookSearch;
+export default BookDetails;

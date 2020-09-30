@@ -56,6 +56,12 @@ html, body, .root {
     right: 25px;
     bottom: 25px;
   }
+
+  .open-details {
+    position: fixed;
+    right: 150px;
+    bottom: 150px;
+  }
   
   .open-search button {
     display: block;
@@ -76,6 +82,24 @@ html, body, .root {
     background-color: rgb(0, 102, 0);
   }
   
+  .open-details button {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2e7d32;
+    background-image: url('/icons/add.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-size: 0;
+    outline: 0;
+  }
+  
+  .open-details button:hover {
+    background-color: rgb(0, 102, 0);
+  }
   
   /* search page */
   
@@ -117,10 +141,14 @@ html, body, .root {
     outline: none;
   }
   
+ 
+
+
   button:active {
     border: red;
     outline: none;
   }
+  
   
   .search-books-results {
     padding: 80px 10px 20px;
@@ -187,12 +215,58 @@ html, body, .root {
     opacity: 0;
     cursor: pointer;
   }
+
+  .book-shelf-details {
+    position: absolute;
+    right: 15;
+    bottom: -10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #60ac5d;
+    background-image: url('/icons/arrow-drop-down.svg');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  
+  .book-shelf-details select {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;    
+  }
   
   /* book cover */
   
   .book-cover {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     background: #eee;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }
   
   .book-cover-title {

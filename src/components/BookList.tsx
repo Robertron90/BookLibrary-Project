@@ -1,5 +1,6 @@
 import React from 'react';
 import * as BooksAPI from '../BooksAPI';
+import { Link } from "react-router-dom";
 
 const BookList = ({ onUpdateBookshelf, books, shelf }) => {
   const handleChange = async (book, value) => {
@@ -46,10 +47,19 @@ const BookList = ({ onUpdateBookshelf, books, shelf }) => {
                     </option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
+                    <option value="read">Read</option>                    
                     <option value="none">None</option>
                   </select>
                 </div>
+
+                <Link to="/loangiver/details">
+                    <button className="book-shelf-details" >
+                      <div class="tooltip">Det
+                        <span class="tooltiptext">Go to Details</span>
+                      </div>
+                    </button>
+                </Link>
+
               </div>
               <div className="book-title">{book.title}</div>
               <div className="book-authors">

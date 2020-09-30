@@ -30,11 +30,14 @@ const MainPage = ({ onUpdateBookshelf, books }) => {
           />
         </div>
       </div>
+
       <div className="open-search">
         <Link to="/loangiver/search">
           <button />
-        </Link>
-      </div>
+        </Link>        
+      </div>   
+          
+      
     </div>
   );
 };
