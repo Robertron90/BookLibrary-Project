@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
-router.use(function (req, res, next) {
+ router.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -11,6 +11,7 @@ router.use(function (req, res, next) {
   );
   next();
 });
+
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));

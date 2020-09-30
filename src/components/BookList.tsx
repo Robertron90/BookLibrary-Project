@@ -54,8 +54,8 @@ const BookList = ({ onUpdateBookshelf, books, shelf }) => {
 
                 <Link to="/loangiver/details">
                     <button className="book-shelf-details" >
-                      <div class="tooltip">Det
-                        <span class="tooltiptext">Go to Details</span>
+                      <div className="tooltip">Det
+                        <span className="tooltiptext">Go to Details</span>
                       </div>
                     </button>
                 </Link>
