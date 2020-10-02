@@ -10,9 +10,7 @@ const App = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      await onUpdateBookshelf();
-    })();
+    onUpdateBookshelf();
   }, []);
 
   const onUpdateBookshelf = async () => {
