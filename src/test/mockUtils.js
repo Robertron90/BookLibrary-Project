@@ -11,6 +11,7 @@ const initMock = () => {
   return new MockAdapter(axios);
 };
 
+/*
 const multiplyRequest = async (mock, responses) => {
   await act(async () => {
     await mock.onAny().reply((config) => {
@@ -27,6 +28,8 @@ const multiplyRequest = async (mock, responses) => {
     });
   });
 };
+
+*/
 
 const makeRequest = async (comp, mock, req) => {
   comp.update();

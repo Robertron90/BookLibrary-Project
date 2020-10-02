@@ -1,4 +1,4 @@
-import App from "../app";
+import App from "../App";
 import MainPage from "../components/MainPage";
 import { books } from "../../stubs/api/index";
 import React from "react";
