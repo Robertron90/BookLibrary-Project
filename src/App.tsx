@@ -6,7 +6,6 @@ import MainPage from "@main/components/MainPage";
 import BookSearch from "@main/components/BookSearch";
 import BookDetails from "@main/components/BookDetails";
 
-
 const App = () => {
   const [books, setBooks] = useState([]);
 
@@ -24,16 +23,22 @@ const App = () => {
     <Router>
       <Styles />
       <div className="app">
-        <Switch>          
+        <Switch>
           <Route exact path="/loangiver">
             <MainPage books={books} onUpdateBookshelf={onUpdateBookshelf} />
           </Route>
           <Route exact path="/loangiver/search">
             <BookSearch shelf={books} onUpdateBookshelf={onUpdateBookshelf} />
           </Route>
-          <Route exact path="/loangiver/details">
-            <BookDetails shelf={books} onUpdateBookshelf={onUpdateBookshelf} />
-          </Route>
+          <Route
+            exact
+            path="/loangiver/details/:id"
+            render={(props) => (
+              <BookDetails
+                book={books.filter((book) => book.id == props.match.params.id)}
+              />
+            )}
+          />
         </Switch>
       </div>
     </Router>

@@ -1,8 +1,7 @@
-import React from 'react';
-import * as BooksAPI from '../BooksAPI';
-import { Link } from "react-router-dom";
+import React from "react";
+import * as BooksAPI from "../BooksAPI";
 
-const BookList = ({ onUpdateBookshelf, books, shelf }) => {
+const BookList = ({ onUpdateBookshelf, books, shelf, onClickBookCover }) => {
   const handleChange = async (book, value) => {
     console.log("Me this");
     await BooksAPI.update(book, value);
@@ -15,8 +14,6 @@ const BookList = ({ onUpdateBookshelf, books, shelf }) => {
     });
     if (res.length > 0) {
       return res[0].shelf;
-    } else {
-      return "none";
     }
   };
 
@@ -25,7 +22,12 @@ const BookList = ({ onUpdateBookshelf, books, shelf }) => {
       {Array.isArray(books) &&
         books.map((book) => (
           <li key={book.id}>
-            <div className="book">
+            <div
+              className="book"
+              onClick={() => {
+                onClickBookCover(book.id);
+              }}
+            >
               <div className="book-top">
                 <div
                   className="book-cover"
@@ -47,19 +49,10 @@ const BookList = ({ onUpdateBookshelf, books, shelf }) => {
                     </option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>                    
+                    <option value="read">Read</option>
                     <option value="none">None</option>
                   </select>
                 </div>
-
-                <Link to="/loangiver/details">
-                    <button className="book-shelf-details" >
-                      <div className="tooltip">Det
-                        <span className="tooltiptext">Go to Details</span>
-                      </div>
-                    </button>
-                </Link>
-
               </div>
               <div className="book-title">{book.title}</div>
               <div className="book-authors">

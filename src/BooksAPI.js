@@ -1,28 +1,31 @@
 import { getConfig } from "@ijl/cli";
+import axios from "axios";
 
-const api = getConfig()["books.api.base.url"];
+const api = "http://89.223.91.151:8083";
 
-export const getAll = () =>
-  fetch(`${api}/books`)
-    .then((res) => res.json())
-    .then((data) => data.books);
+const client = axios.create({
+  baseURL: api,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-export const update = (book, shelf) =>
-  fetch(`${api}/books/${book.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ shelf }),
-  }).then((res) => res.json());
+export const getAll = () => {
+  return client
+    .get("/books")
+    .then((response) => response.data.books)
+    .catch((e) => e.response);
+};
+
+export const update = (book, shelf) => {
+  client
+    .put(`/books/${book.id}`, JSON.stringify({ shelf }))
+    .then((response) => response.data.books)
+    .catch((e) => e.response);
+};
 
 export const search = (query) =>
-  fetch(`${api}/search`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query }),
-  })
-    .then((res) => res.json())
-    .then((data) => data.books);
+  client
+    .post(`/search`, JSON.stringify({ query }))
+    .then((response) => response.data.books)
+    .catch((e) => e.response);

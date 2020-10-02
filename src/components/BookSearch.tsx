@@ -19,7 +19,7 @@ const BookSearch = ({ shelf, onUpdateBookshelf }) => {
     <div className="search-books">
       <div className="search-books-bar">
         <Link to="/loangiver">
-          <button className="close-search" >Close</button>
+          <button className="close-search">Close</button>
         </Link>
         <div className="search-books-input-wrapper">
           <input
@@ -34,16 +34,15 @@ const BookSearch = ({ shelf, onUpdateBookshelf }) => {
           shelf={shelf}
           onUpdateBookshelf={onUpdateBookshelf}
           books={searchResults}
+          onClickBookCover={() => {}}
         />
       </div>
 
-      <div className="open-details">        
+      <div className="open-details">
         <Link to="/loangiver">
           <button />
         </Link>
       </div>
-
-
     </div>
   );
 };

@@ -4,7 +4,7 @@
     "description": "",
     "main": "./src/index.tsx",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 0",
+        "test": "jest",
         "start": "ijl-cli --server --port=8099 --with-open-browser",
         "build": "npm run clean && ijl-cli --build --dev",
         "build:prod": "npm run clean && ijl-cli --build",
@@ -15,16 +15,33 @@
     "license": "ISC",
     "dependencies": {
         "@ijl/cli": "^1.10.3",
+        "axios": "^0.20.0",
+        "axios-mock-adapter": "^1.18.2",
         "express": "^4.17.1",
+        "lodash": "^4.17.20",
         "nodemon": "^2.0.4",
         "react": "^16.13.1",
+        "react-bootstrap": "^1.0.0-beta.11",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
-        "react-bootstrap": "^1.0.0-beta.11",
         "styled-components": "^5.2.0",
         "typescript": "^4.0.2"
     },
     "devDependencies": {
-        "css-loader": "^4.3.0"
+        "@babel/plugin-proposal-class-properties": "^7.10.4",
+        "@babel/plugin-transform-runtime": "^7.11.5",
+        "@babel/preset-env": "^7.11.5",
+        "@babel/preset-react": "^7.10.4",
+        "@babel/preset-typescript": "^7.10.4",
+        "css-loader": "^4.3.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.5",
+        "enzyme-to-json": "^3.6.1",
+        "jest": "^26.4.2"
+    },
+    "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
     }
 }

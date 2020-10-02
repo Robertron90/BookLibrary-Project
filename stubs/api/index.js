@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
- router.use(function (req, res, next) {
+router.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -12,16 +12,15 @@ const path = require("path");
   next();
 });
 
-
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
-
-let books = null;
 
 const loadJson = (filepath, encoding = "utf8") =>
   JSON.parse(
     fs.readFileSync(path.resolve(__dirname, `${filepath}.json`), { encoding })
   );
+
+let books = loadJson("./bookData");
 
 router.get("/books", (_req, res) => {
   if (books === null) books = loadJson("./bookData");
@@ -46,5 +45,5 @@ router.put("/books/:bookId", (req, res) => {
   res.status(200).send(books);
 });
 
-module.exports = router;
+module.exports.router = router;
 module.exports.books = books;
